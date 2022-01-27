@@ -8,10 +8,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.8.5",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "@nomiclabs/hardhat-ethers": "^2.0.0",
     "@nomiclabs/hardhat-waffle": "^2.0.0",
     "ethereum-waffle": "^3.0.0",
     "ethers": "^5.0.32",
+    "framer-motion": "^6",
     "hardhat": "^2.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"

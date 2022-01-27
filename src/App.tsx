@@ -1,5 +1,18 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
+import {
+  ThemeProvider,
+  theme,
+  CSSReset,
+  Flex,
+  Box,
+  Heading,
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Text,
+} from "@chakra-ui/react";
 
 import Greeter from "./artifacts/contracts/Greeter.sol/Greeter.json";
 
@@ -46,25 +59,47 @@ function App() {
   }
 
   return (
-    <>
-      <header className="App-header">
-        <h1>Ethereum React</h1>
-        <h2>{data}</h2>
-      </header>
-      <main>
-        <button onClick={fetchGreeting}>Fetch Greeting</button>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Your Greeting
-            <input
-              onChange={(e) => setGreetingValue(e.target.value)}
-              value={greetingValue}
-            />
-          </label>
-          <button>Set Greeting</button>
-        </form>
-      </main>
-    </>
+    <ThemeProvider theme={theme}>
+      <CSSReset />
+      <Flex
+        direction="column"
+        width="full"
+        align="center"
+        justifyContent="center"
+        p={4}
+      >
+        <Box textAlign="center">
+          <Heading>Ethereum - React</Heading>
+        </Box>
+        <Box my={4} textAlign="left">
+          <Text>Greeting from Ethereum: {data}</Text>
+          <Button mt={4} type="button" onClick={fetchGreeting}>
+            Fetch greeting
+          </Button>
+          <Box
+            mt={4}
+            p={4}
+            borderWidth={1}
+            borderRadius={8}
+            borderColor="lightgray"
+            boxShadow="lg"
+            as="form"
+            onSubmit={handleSubmit}
+          >
+            <FormControl>
+              <FormLabel>Greeting</FormLabel>
+              <Input
+                onChange={(e) => setGreetingValue(e.target.value)}
+                value={greetingValue}
+              />
+            </FormControl>
+            <Button mt={4} type="submit">
+              Save greeting
+            </Button>
+          </Box>
+        </Box>
+      </Flex>
+    </ThemeProvider>
   );
 }
 
